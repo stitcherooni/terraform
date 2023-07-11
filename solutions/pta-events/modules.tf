@@ -1,6 +1,6 @@
 #VNet
 module "az_vnet" {
-  source = "../../modules/az_vnet"
+  source = "../../modules/az-vnet"
 
   vnet_name           = "${var.env_name}-ptae-vnet-01"
   resource_group_name = azurerm_resource_group.this.name
@@ -20,7 +20,7 @@ module "az_vnet" {
 
 #Subnet
 module "az_subnet" {
-  source = "../../modules/az_subnet"
+  source = "../../modules/az-subnet"
 
   resource_group_name  = azurerm_resource_group.this.name
   virtual_network_name = module.az_vnet.virtual_network_name
