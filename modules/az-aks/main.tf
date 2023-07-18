@@ -83,7 +83,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     tomap({
       module             = "az_aks"
       resource_type      = "kubernetes_cluster"
-      kubernetes_version = lookup(var.aks_conf, "kubernetes_version", "1.25.5")
+      kubernetes_version = lookup(var.aks_conf, "kubernetes_version", "1.27.1")
       name               = lookup(var.aks_conf, "name", null)
     })
   )

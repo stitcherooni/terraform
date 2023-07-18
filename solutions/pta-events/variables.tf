@@ -37,3 +37,9 @@ variable "aks_conf" {
   default     = {}
   description = "Configuration parameters for azure kubernetes service"
 }
+
+#Tags
+variable "tags" {
+  type        = map(string)
+  description = "List of the tags that should be added to applicable resources"
+}
