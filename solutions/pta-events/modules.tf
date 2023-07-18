@@ -34,3 +34,16 @@ module "az_subnet" {
   depends_on = [module.az_vnet,
   ]
 }
+
+#AKS
+module "az_aks" {
+  source = "../../modules/az-aks"
+
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  aks_conf            = var.aks_conf
+
+  tags = merge(
+    var.tags,
+  )
+}

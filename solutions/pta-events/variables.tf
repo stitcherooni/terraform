@@ -32,3 +32,8 @@ variable "service_delegation_action" {
   type        = list(string)
   default     = []
 }
+#AKS
+variable "aks_conf" {
+  default     = {}
+  description = "Configuration parameters for azure kubernetes service"
+}
