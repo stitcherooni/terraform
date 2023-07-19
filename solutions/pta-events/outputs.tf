@@ -38,7 +38,12 @@ output "client_key" {
 output "cluster_ca_certificate" {
   value = module.az_aks.cluster_ca_certificate
 }
-
-
-
-
+#Azure Role Assignment
+output "role_assignment_name" {
+  description = "Role Name"
+  value       = module.az_role_assignment.role_assignment_name
+}
+output "object_id" {
+  description = "The assigned object ID"
+  value       = module.az_role_assignment.object_id
+}

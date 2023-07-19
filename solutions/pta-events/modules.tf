@@ -47,3 +47,10 @@ module "az_aks" {
     var.tags,
   )
 }
+
+#Azure Role Assignment
+module "az_role_assignment" {
+  source = "../../modules/az-role-assignment"
+
+  role_assignment_params = var.role_assignment_params
+}
