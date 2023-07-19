@@ -18,8 +18,8 @@ resource "azurerm_kubernetes_cluster" "this" {
   dynamic "azure_active_directory_role_based_access_control" {
     for_each = lookup(each.value, "azad_rbac", {}) != {} ? [1] : []
     content {
-      managed                = lookup(each.value.azad_rbac, "rbac_managed", false)
-      azure_rbac_enabled     = lookup(each.value.azad_rbac, "azure_rbac_enabled", null)
+      managed                = lookup(each.value.azad_rbac, "rbac_managed", true)
+      azure_rbac_enabled     = lookup(each.value.azad_rbac, "azure_rbac_enabled", false)
       admin_group_object_ids = lookup(each.value.azad_rbac, "admin_group_object_ids", []) #[]
       tenant_id              = lookup(each.value.azad_rbac, "tenant_id", null)
     }
