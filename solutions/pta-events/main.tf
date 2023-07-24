@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "this" {
 #Create public IP for ingress controller
 resource "azurerm_public_ip" "ingress_pubip" {
   name                = "${var.env_name}-ingress-pubip"
-  resource_group_name = module.az_aks.node_resource_group
+  resource_group_name = module.az_aks.node_resource_group["${var.env_name}-ptae-aks-01"]
   location            = var.location
   allocation_method   = "Static"
   ip_version          = "IPv4"
