@@ -12,3 +12,23 @@ resource "azurerm_resource_group" "this" {
     })
   )
 }
+
+#Create public IP for ingress controller
+resource "azurerm_public_ip" "ingress_pubip" {
+  name                = "${var.env_name}-ingress-pubip"
+  resource_group_name = module.aks.node_resource_group
+  location            = var.location
+  allocation_method   = "Static"
+  ip_version          = "IPv4"
+  sku                 = "Standard"
+  zones               = [1, 2]
+
+  tags = var.tags
+}
+
+#Create Namespace
+resource "kubernetes_namespace" "this" {
+  metadata {
+    name = var.env_name
+  }
+}

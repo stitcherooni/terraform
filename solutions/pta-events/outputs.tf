@@ -38,6 +38,10 @@ output "client_key" {
 output "cluster_ca_certificate" {
   value = module.az_aks.cluster_ca_certificate
 }
+#PublicIP for Ingress Controller
+output "ingress_pubip" {
+  value = azurerm_public_ip.ingress_pubip.ip_address
+}
 #Azure Role Assignment
 # output "role_assignment_name" {
 #   description = "Role Name"
