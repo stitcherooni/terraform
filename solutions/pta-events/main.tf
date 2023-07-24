@@ -33,8 +33,8 @@ resource "azurerm_public_ip" "ingress_pubip" {
 }
 
 #Create Namespace
-resource "kubernetes_namespace" "this" {
-  metadata {
-    name = var.env_name
-  }
-}
+# resource "kubernetes_namespace" "this" {
+#   metadata {
+#     name = var.env_name
+#   }
+# }

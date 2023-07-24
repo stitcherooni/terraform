@@ -33,3 +33,11 @@ output "cluster_ca_certificate" {
   value       = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config.0.cluster_ca_certificate }
   sensitive   = true
 }
+output "az_kube_config_raw" {
+  value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config_raw } 
+  sensitive = true
+}
+output "az_kube_config" {
+  value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config } 
+  sensitive = true
+}
