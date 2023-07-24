@@ -26,6 +26,9 @@ output "aks_name" {
 output "aks_id" {
   value = module.az_aks.aks_id
 }
+output "node_resource_group" {
+  value = module.az_aks.node_resource_group
+}
 output "aks_host" {
   value = module.az_aks.host
 }
