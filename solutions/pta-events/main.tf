@@ -21,7 +21,13 @@ resource "azurerm_public_ip" "ingress_pubip" {
   allocation_method   = "Static"
   ip_version          = "IPv4"
   sku                 = "Standard"
-  zones               = [1, 2]
+  zones               = [1]
+
+  lifecycle {
+    ignore_changes = [
+      zones,
+    ]
+  }
 
   tags = var.tags
 }
