@@ -50,8 +50,8 @@ output "az_kube_config" {
   value = module.az_aks.az_kube_config
   sensitive = true
 }
-output "az_kube_admin_config" {
-  value = module.az_aks.az_kube_admin_config
+output "aks" {
+  value = module.az_aks.aks
   sensitive = true
 }
 

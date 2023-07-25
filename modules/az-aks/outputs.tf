@@ -42,7 +42,7 @@ output "az_kube_config" {
   sensitive = true
 }
 
-output "az_kube_admin_config" {
-  value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_admin_config } 
+output "aks" {
+  value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks } 
   sensitive = true
 }
