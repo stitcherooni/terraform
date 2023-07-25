@@ -50,6 +50,11 @@ output "az_kube_config" {
   value = module.az_aks.az_kube_config
   sensitive = true
 }
+output "az_kube_admin_config" {
+  value = module.az_aks.az_kube_admin_config
+  sensitive = true
+}
+
 
 
 #PublicIP for Ingress Controller
