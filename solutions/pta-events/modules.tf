@@ -59,7 +59,7 @@ module "aks_ingress_controller" {
   # ingress config
   ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
 
-  depends_on = [kubernetes_namespace.this, ]
+  depends_on = [kubernetes_namespace.ingress, ]
 }
 
 #Azure Role Assignment
