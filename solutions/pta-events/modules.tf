@@ -49,18 +49,18 @@ module "az_aks" {
 }
 
 #Kubernetes ingress-nginx
-# module "aks_ingress_controller" {
-#   source = "../../modules/az_aks_ingress"
+module "aks_ingress_controller" {
+  source = "../../modules/az_aks_ingress"
 
-#   # common part
-#   ingress_name   = lower("${var.env_name}-ingress")
-#   namespace_name = kubernetes_namespace.this.id
+  # common part
+  ingress_name   = lower("${var.env_name}-ingress")
+  namespace_name = kubernetes_namespace.ingress.id
 
-#   # ingress config
-#   ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
+  # ingress config
+  ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
 
-#   depends_on = [kubernetes_namespace.this, ]
-# }
+  depends_on = [kubernetes_namespace.this, ]
+}
 
 #Azure Role Assignment
 module "az_role_assignment" {
