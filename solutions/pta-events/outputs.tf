@@ -62,11 +62,11 @@ output "ingress_pubip" {
   value = azurerm_public_ip.ingress_pubip.ip_address
 }
 #Azure Role Assignment
-# output "role_assignment_name" {
-#   description = "Role Name"
-#   value       = module.az_role_assignment.role_assignment_name
-# }
-# output "object_id" {
-#   description = "The assigned object ID"
-#   value       = module.az_role_assignment.object_id
-# }
+output "role_assignment_name" {
+  description = "Role Name"
+  value       = module.az_role_assignment.role_assignment_name
+}
+output "object_id" {
+  description = "The assigned object ID"
+  value       = module.az_role_assignment.object_id
+}
