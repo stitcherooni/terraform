@@ -7,7 +7,7 @@ resource "helm_release" "ingress-nginx" {
 
   set {
     name  = "controller.ingressClassResource.name"
-    value = "${var.namespace_name}-ingress-nginx"
+    value = "${var.ingress_name}"
   }
   set {
     name  = "service.type"
