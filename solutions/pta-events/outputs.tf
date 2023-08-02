@@ -72,7 +72,7 @@ output "private_dns_name" {
   value = module.az_private_dns_zone.private_dns_name
 }
 output "private_dns_id" {
-  value = module.az_private_dns_zone.private_dns_name
+  value = module.az_private_dns_zone.private_dns_id
 }
 #MySQL Flexible Server
 output "mysql_server_name" {
