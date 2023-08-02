@@ -84,4 +84,8 @@ module "az_mysql_flexible_server" {
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   mysql_conf          = var.mysql_conf
+
+  tags = merge(
+    var.tags,
+  )
 }
