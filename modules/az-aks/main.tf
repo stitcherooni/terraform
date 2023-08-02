@@ -95,10 +95,4 @@ resource "azurerm_kubernetes_cluster" "this" {
       default_node_pool[0].node_taints,
     ]
   }
-
-  timeouts {
-    create = "5m"
-    update = "5m"
-    delete = "5m"
-  }
 }

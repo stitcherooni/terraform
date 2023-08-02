@@ -1,5 +1,5 @@
 output "mysql_server_name" {
-  value = [ for sql in azurerm_mysql_flexible_server.this : sql.name ]
+  value = [for sql in azurerm_mysql_flexible_server.this : sql.name]
 }
 output "mysql_server_id" {
   value = { for sql in azurerm_mysql_flexible_server.this : sql.name => sql.id }
