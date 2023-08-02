@@ -10,7 +10,6 @@ resource "azurerm_role_assignment" "this" {
 
   timeouts {
     create = "3m"
-    update = "3m"
     delete = "3m"
   }
 }
