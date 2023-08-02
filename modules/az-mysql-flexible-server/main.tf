@@ -20,7 +20,7 @@ resource "azurerm_mysql_flexible_server" "this" {
   backup_retention_days  = lookup(each.value, "backup_retention_days", 7)
   delegated_subnet_id    = lookup(each.value, "delegated_subnet_id", null)
   private_dns_zone_id    = lookup(each.value, "private_dns_zone_id", null)
-  sku_name               = lookup(each.value, "sku_name", "Standard_B2s")
+  sku_name               = lookup(each.value, "sku_name", "B_Standard_B2s")
   version                = lookup(each.value, "version", "8.0.21")
   zone                   = lookup(each.value, "zone", null)
 
