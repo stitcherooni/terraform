@@ -97,8 +97,8 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   timeouts {
-    create = "3m"
-    update = "3m"
-    delete = "3m"
+    create = "5m"
+    update = "5m"
+    delete = "5m"
   }
 }
