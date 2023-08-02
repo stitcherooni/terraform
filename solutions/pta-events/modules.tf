@@ -46,6 +46,9 @@ module "az_aks" {
   tags = merge(
     var.tags,
   )
+
+  depends_on = [module.az_subnet,
+  ]  
 }
 
 #Kubernetes ingress-nginx
@@ -59,7 +62,9 @@ module "aks_ingress_controller" {
   # ingress config
   ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
 
-  depends_on = [kubernetes_namespace.ingress, ]
+  depends_on = [kubernetes_namespace.ingress,
+                module.az_aks
+  ]
 }
 
 #Azure Role Assignment
@@ -88,4 +93,8 @@ module "az_mysql_flexible_server" {
   tags = merge(
     var.tags,
   )
+
+  depends_on = [module.az_private_dns_zone,
+                module.az_subnet
+  ]
 }
