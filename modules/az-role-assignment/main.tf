@@ -6,4 +6,10 @@ resource "azurerm_role_assignment" "this" {
   scope                = lookup(each.value, "scope", null)
   role_definition_name = lookup(each.value, "role_definition_name", null)
   principal_id         = lookup(each.value, "principal_id", null)
+
+  timeouts {
+    create = "3m"
+    update = "3m"
+    delete = "3m"
+  }
 }
