@@ -59,6 +59,12 @@ module "aks_ingress_controller" {
   # ingress config
   ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
 
+  timeouts {
+    create = "3m"
+    update = "3m"
+    delete = "3m"
+  }
+  
   depends_on = [kubernetes_namespace.ingress, ]
 }
 
