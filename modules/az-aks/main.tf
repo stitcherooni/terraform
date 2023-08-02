@@ -81,6 +81,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   tags = merge(
     var.tags,
     tomap({
+      created_by         = "terraform"
       module             = "az_aks"
       resource_type      = "kubernetes_cluster"
       kubernetes_version = lookup(each.value, "kubernetes_version", "1.27.1")
@@ -93,5 +94,11 @@ resource "azurerm_kubernetes_cluster" "this" {
       default_node_pool[0].node_labels,
       default_node_pool[0].node_taints,
     ]
+  }
+
+  timeouts {
+    create = "3m"
+    update = "3m"
+    delete = "3m"
   }
 }

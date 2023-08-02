@@ -7,6 +7,7 @@ resource "azurerm_virtual_network" "this" {
   tags = merge(
     var.tags,
     tomap({
+      created_by    = "terraform"
       module        = "az_vnet"
       resource_type = "virtual_network"
       name          = "${var.vnet_name}"

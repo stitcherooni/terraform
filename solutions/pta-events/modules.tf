@@ -50,7 +50,7 @@ module "az_aks" {
 
 #Kubernetes ingress-nginx
 module "aks_ingress_controller" {
-  source = "../../modules/az_aks_ingress"
+  source = "../../modules/az-aks-ingress"
 
   # common part
   ingress_name   = "ingress-controller"
@@ -67,4 +67,21 @@ module "az_role_assignment" {
   source = "../../modules/az-role-assignment"
 
   role_assignment_params = var.role_assignment_params
+}
+
+#Azure Private DNS 
+module "az_private_dns_zone" {
+  source = "../../modules/az-private-dns-zone"
+
+  resource_group_name   = azurerm_resource_group.this.name
+  private_dns_zone_conf = var.private_dns_zone_conf
+}
+
+#MySQL Flexible Server
+module "az_mysql_flexible_server" {
+  source = "../../modules/az-mysql-flexible-server"
+
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  mysql_conf          = var.mysql_conf
 }

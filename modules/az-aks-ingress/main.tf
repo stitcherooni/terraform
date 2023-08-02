@@ -26,6 +26,12 @@ resource "helm_release" "ingress-nginx" {
     value = "Local"
   }
 
+  timeouts {
+    create = "3m"
+    update = "3m"
+    delete = "3m"
+  }
+  
   ###########################################################
   ####### implement logic (uncoment - lock ingress controller to watch in specified namespace)
   /*

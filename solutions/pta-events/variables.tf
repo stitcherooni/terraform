@@ -43,6 +43,19 @@ variable "role_assignment_params" {
   description = "Assigns a given Principal (User or Group) to a given Role."
 }
 
+#Azure Private DNS 
+variable "private_dns_zone_conf" {
+  description = "Private DNS zone configuration"
+  default     = {}
+}
+
+#MySQL Flexible Server
+variable "mysql_conf" {
+  description = "Configuration parameters for MySQL Server"
+  type        = map(any)
+  default     = {}
+}
+
 #Tags
 variable "tags" {
   type        = map(string)

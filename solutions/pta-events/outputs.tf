@@ -54,9 +54,6 @@ output "aks" {
   value = module.az_aks.aks
   sensitive = true
 }
-
-
-
 #PublicIP for Ingress Controller
 output "ingress_pubip" {
   value = azurerm_public_ip.ingress_pubip.ip_address
@@ -69,4 +66,31 @@ output "role_assignment_name" {
 output "object_id" {
   description = "The assigned object ID"
   value       = module.az_role_assignment.object_id
+}
+#Azure Private DNS 
+output "private_dns_name" {
+  value = module.az_private_dns_zone.private_dns_name
+}
+output "private_dns_id" {
+  value = module.az_private_dns_zone.private_dns_name
+}
+#MySQL Flexible Server
+output "mysql_server_name" {
+  value = [ for sql in azurerm_mysql_flexible_server.this : sql.name ]
+}
+output "mysql_server_id" {
+  value = { for sql in azurerm_mysql_flexible_server.this : sql.name => sql.id }
+}
+output "mysql_server_fqdn" {
+  value = { for sql in azurerm_mysql_flexible_server.this : sql.name => sql.fqdn }
+}
+output "mysql_server_login" {
+  value       = { for sql in azurerm_mysql_flexible_server.this : sql.name => sql.administrator_login }
+  sensitive   = true
+  description = "The Administrator login for the MySQL Flexible Server"
+}
+output "mysql_server_password" {
+  value       = { for sql in azurerm_mysql_flexible_server.this : sql.name => sql.administrator_password }
+  sensitive   = true
+  description = "The Password associated with the administrator_login for the MySQL Flexible Server"
 }
