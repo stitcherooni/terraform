@@ -41,13 +41,16 @@ output "client_key" {
 output "cluster_ca_certificate" {
   value = module.az_aks.cluster_ca_certificate
 }
-
 output "az_kube_config_raw" {
   value = module.az_aks.az_kube_config_raw
   sensitive = true
 }
 output "az_kube_config" {
   value = module.az_aks.az_kube_config
+  sensitive = true
+}
+output "az_kubelet_identity" {
+  value = module.az_aks.az_kubelet_identity
   sensitive = true
 }
 output "aks" {

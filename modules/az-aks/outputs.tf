@@ -30,7 +30,7 @@ output "client_key" {
 }
 output "cluster_ca_certificate" {
   description = "public CA certificate used as the root of trust for the Kubernetes cluster."
-  value       = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config.0.cluster_ca_certificate }
+  value       = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config }
   sensitive   = true
 }
 output "az_kube_config_raw" {
@@ -41,6 +41,11 @@ output "az_kube_config" {
   value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kube_config } 
   sensitive = true
 }
+output "az_kubelet_identity" {
+  value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks.kubelet_identity } 
+  sensitive = true
+}
+
 
 output "aks" {
   value = { for aks in azurerm_kubernetes_cluster.this : aks.name => aks } 
