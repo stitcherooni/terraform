@@ -39,7 +39,7 @@ output "client_key" {
   value = module.az_aks.client_key
 }
 output "cluster_ca_certificate" {
-  value = module.az_aks.cluster_ca_certificate
+  value = module.az_aks.az_kube_config.0.cluster_ca_certificate 
 }
 output "az_kube_config_raw" {
   value = module.az_aks.az_kube_config_raw
