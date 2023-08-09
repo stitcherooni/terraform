@@ -29,18 +29,18 @@ output "aks_id" {
 output "node_resource_group" {
   value = module.az_aks.node_resource_group
 }
-output "aks_host" {
-  value = module.az_aks.host
-}
-output "client_certificate" {
-  value = module.az_aks.client_certificate
-}
-output "client_key" {
-  value = module.az_aks.client_key
-}
-output "cluster_ca_certificate" {
-  value = module.az_aks.cluster_ca_certificate
-}
+# output "aks_host" {
+#   value = module.az_aks.host
+# }
+# output "client_certificate" {
+#   value = module.az_aks.client_certificate
+# }
+# output "client_key" {
+#   value = module.az_aks.client_key
+# }
+# output "cluster_ca_certificate" {
+#   value = module.az_aks.cluster_ca_certificate
+# }
 output "az_kube_config_raw" {
   value = module.az_aks.az_kube_config_raw
   sensitive = true
