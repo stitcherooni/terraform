@@ -32,6 +32,25 @@ resource "azurerm_public_ip" "ingress_pubip" {
   tags = var.tags
 }
 
+#Create public IP for Bastion Host
+resource "azurerm_public_ip" "bastion_pubip" {
+  name                = "${var.env_name}-bastion-pubip"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = var.location
+  allocation_method   = "Static"
+  ip_version          = "IPv4"
+  sku                 = "Standard"
+  zones               = [1]
+
+  lifecycle {
+    ignore_changes = [
+      zones,
+    ]
+  }
+
+  tags = var.tags
+}
+
 #Create Namespace
 resource "kubernetes_namespace" "ingress" {
   metadata {

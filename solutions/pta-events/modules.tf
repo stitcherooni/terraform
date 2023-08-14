@@ -48,7 +48,7 @@ module "az_aks" {
   )
 
   depends_on = [module.az_subnet,
-  ]  
+  ]
 }
 
 #Kubernetes ingress-nginx
@@ -63,7 +63,7 @@ module "aks_ingress_controller" {
   ingress_pubip = azurerm_public_ip.ingress_pubip.ip_address
 
   depends_on = [kubernetes_namespace.ingress,
-                module.az_aks
+    module.az_aks
   ]
 }
 
@@ -95,6 +95,19 @@ module "az_mysql_flexible_server" {
   )
 
   depends_on = [module.az_private_dns_zone,
-                module.az_subnet
+    module.az_subnet
   ]
+}
+
+#Azure Bastion Host
+module "az_private_dns_zone" {
+  source = "../../modules/az-bastion"
+
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
+  bastion_conf        = var.bastion_conf
+
+  tags = merge(
+    var.tags,
+  )
 }

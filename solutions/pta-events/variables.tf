@@ -56,6 +56,13 @@ variable "mysql_conf" {
   default     = {}
 }
 
+#Azure Bastion Host
+variable "bastion_conf" {
+  description = "Configuration parameters for Azure Bastion Host"
+  type        = map(any)
+  default     = {}
+}
+
 #Tags
 variable "tags" {
   type        = map(string)
