@@ -100,7 +100,7 @@ module "az_mysql_flexible_server" {
 }
 
 #Azure Bastion Host
-module "az_private_dns_zone" {
+module "az_bastion" {
   source = "../../modules/az-bastion"
 
   resource_group_name = azurerm_resource_group.this.name
