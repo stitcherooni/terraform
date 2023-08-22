@@ -50,18 +50,26 @@ resource "kubernetes_deployment_v1" "this" {
                     }
                   }
                   dynamic "env" {
-                    for_each = lookup(each.value.spec.template.spec.container, "env", {}) != {} ? [1] : []
+                    iterator = env
+                    for_each = can(var.deployment_conf[each.key].spec.template.spec.container.env) ? [for value in var.deployment_conf[each.key].spec.template.spec.container.env : value] : []
                     content {
-                      name  = lookup(each.value.spec.template.spec.container.env, "name", null)
-                      value = lookup(each.value.spec.template.spec.container.env, "value", null)
+                      name  = lookup(env.value, "name", null)
+                      value = lookup(env.value, "value", null)
                       dynamic "value_from" {
-                        for_each = lookup(each.value.spec.template.spec.container.env, "value_from", {}) != {} ? [1] : []
+                        for_each = lookup(env.value, "value_from", {}) != {} ? [1] : []
                         content {
-                          dynamic "secret_key_ref" {
-                            for_each = lookup(each.value.spec.template.spec.container.env.value_from, "secret_key_ref", {}) != {} ? [1] : []
+                          dynamic "field_ref" {
+                            for_each = lookup(env.value.value_from, "field_ref", {}) != {} ? [1] : []
                             content {
-                              name = lookup(each.value.spec.template.spec.container.env.value_from.secret_key_ref, "name", null)
-                              key  = lookup(each.value.spec.template.spec.container.env.value_from.secret_key_ref, "value", null)
+                              name = lookup(env.value.value_from.field_ref, "api_version", null)
+                              key  = lookup(env.value.value_from.field_ref, "field_path", null)
+                            }
+                          }
+                          dynamic "secret_key_ref" {
+                            for_each = lookup(env.value.value_from, "secret_key_ref", {}) != {} ? [1] : []
+                            content {
+                              name = lookup(env.value.value_from.secret_key_ref, "name", null)
+                              key  = lookup(env.value.value_from.secret_key_ref, "value", null)
                             }
                           }
                         }
