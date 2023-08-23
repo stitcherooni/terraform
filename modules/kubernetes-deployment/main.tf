@@ -61,15 +61,15 @@ resource "kubernetes_deployment_v1" "this" {
                           dynamic "field_ref" {
                             for_each = lookup(env.value.value_from, "field_ref", {}) != {} ? [1] : []
                             content {
-                              name = lookup(env.value.value_from.field_ref, "api_version", null)
-                              key  = lookup(env.value.value_from.field_ref, "field_path", null)
+                              api_version = lookup(env.value.value_from.field_ref, "api_version", null)
+                              field_path  = lookup(env.value.value_from.field_ref, "field_path", null)
                             }
                           }
                           dynamic "secret_key_ref" {
                             for_each = lookup(env.value.value_from, "secret_key_ref", {}) != {} ? [1] : []
                             content {
                               name = lookup(env.value.value_from.secret_key_ref, "name", null)
-                              key  = lookup(env.value.value_from.secret_key_ref, "value", null)
+                              key  = lookup(env.value.value_from.secret_key_ref, "key", null)
                             }
                           }
                         }
