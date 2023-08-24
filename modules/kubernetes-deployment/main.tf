@@ -61,7 +61,7 @@ resource "kubernetes_deployment_v1" "this" {
                           dynamic "field_ref" {
                             for_each = lookup(env.value.value_from, "field_ref", {}) != {} ? [1] : []
                             content {
-                              api_version = lookup(env.value.value_from.field_ref, "api_version", null)
+                              api_version = lookup(env.value.value_from.field_ref, "api_version", "v1")
                               field_path  = lookup(env.value.value_from.field_ref, "field_path", null)
                             }
                           }
