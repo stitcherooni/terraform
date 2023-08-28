@@ -14,6 +14,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   http_application_routing_enabled  = lookup(each.value, "http_application_routing_enabled", false)
   role_based_access_control_enabled = lookup(each.value, "role_based_access_control_enabled", true)
   local_account_disabled            = lookup(each.value, "local_account_disabled", true)
+  node_os_channel_upgrade           = lookup(each.value, "node_os_channel_upgrade", "SecurityPatch")
 
   dynamic "azure_active_directory_role_based_access_control" {
     for_each = lookup(each.value, "azad_rbac", {}) != {} ? [1] : []
