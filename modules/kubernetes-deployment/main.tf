@@ -35,6 +35,12 @@ resource "kubernetes_deployment_v1" "this" {
             content {
               restart_policy       = lookup(each.value.spec.template.spec, "restart_policy", null)
               service_account_name = lookup(each.value.spec.template.spec, "service_account_name", null)
+              dynamic "security_context" {
+                for_each = lookup(each.value.spec.template.spec, "security_context", {}) != {} ? [1] : []
+                content {
+                  privileged = lookup(each.value.spec.template.spec.security_context, "privileged", true)
+                }
+              }
               dynamic "container" {
                 for_each = lookup(each.value.spec.template.spec, "container", {}) != {} ? [1] : []
                 content {
