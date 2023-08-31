@@ -41,11 +41,8 @@ resource "kubernetes_deployment_v1" "this" {
                   name              = lookup(each.value.spec.template.spec.container, "name", null)
                   image             = lookup(each.value.spec.template.spec.container, "image", null)
                   image_pull_policy = lookup(each.value.spec.template.spec.container, "image_pull_policy", null)
-                  dynamic "security_context" {
-                    for_each = lookup(each.value.spec.template.spec.container, "security_context", {}) != {} ? [1] : []
-                    content {
-                      privileged = lookup(each.value.spec.template.spec.container.security_context, "privileged", true)
-                    }
+                  security_context {
+                    privileged  = true
                   }
                   dynamic "port" {
                     for_each = lookup(each.value.spec.template.spec.container, "port", {}) != {} ? [1] : []
