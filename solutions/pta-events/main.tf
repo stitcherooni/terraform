@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "this" {
 
 #Create public IP for ingress controller
 resource "azurerm_public_ip" "ingress_pubip" {
-  name                = "${var.env_name}-ingress-pubip"
+  name                = "${var.env_name}-ptae-ingress-pubip"
   resource_group_name = module.az_aks.node_resource_group["${var.env_name}-ptae-aks-01"]
   location            = var.location
   allocation_method   = "Static"
@@ -34,7 +34,7 @@ resource "azurerm_public_ip" "ingress_pubip" {
 
 #Create public IP for Bastion Host
 resource "azurerm_public_ip" "bastion_pubip" {
-  name                = "${var.env_name}-bastion-pubip"
+  name                = "${var.env_name}-ptae-bastion-pubip"
   resource_group_name = azurerm_resource_group.this.name
   location            = var.location
   allocation_method   = "Static"
