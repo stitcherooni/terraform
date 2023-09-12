@@ -111,3 +111,10 @@ module "az_bastion" {
     var.tags,
   )
 }
+
+#Azure Kubernetes Secret
+module "az_aks_secret" {
+  source = "../../modules/kubernetes-secret"
+  
+  secret = var.secret
+}
