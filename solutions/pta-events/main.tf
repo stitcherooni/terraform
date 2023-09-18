@@ -54,6 +54,6 @@ resource "azurerm_public_ip" "bastion_pubip" {
 #Create Namespace
 resource "kubernetes_namespace" "ingress" {
   metadata {
-    name = "ingress-controller"
+    name = "ingress-nginx"
   }
 }
