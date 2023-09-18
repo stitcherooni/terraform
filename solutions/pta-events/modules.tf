@@ -56,7 +56,7 @@ module "aks_ingress_controller" {
   source = "../../modules/az-aks-ingress"
 
   # common part
-  ingress_name   = "ingress-controller"
+  ingress_name   = "ingress-nginx"
   namespace_name = kubernetes_namespace.ingress.id
 
   # ingress config
