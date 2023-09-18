@@ -25,7 +25,10 @@ resource "helm_release" "ingress-nginx" {
     name  = "controller.service.externalTrafficPolicy"
     value = "Local"
   }
-  
+  set {
+    name  = "controller.ingressClassResource.controllerValue"
+    value = "k8s.io/ingress-nginx"
+  }
   ###########################################################
   ####### implement logic (uncoment - lock ingress controller to watch in specified namespace)
   /*
