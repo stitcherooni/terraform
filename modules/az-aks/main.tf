@@ -39,20 +39,21 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   default_node_pool {
-    name                 = lookup(each.value.default_node_pool, "name", "default")
-    vm_size              = lookup(each.value.default_node_pool, "vm_size", "Standard_B2s")
-    orchestrator_version = lookup(each.value.default_node_pool, "orchestrator_version", null)
-    os_disk_size_gb      = lookup(each.value.default_node_pool, "os_disk_size_gb", 256)
-    vnet_subnet_id       = lookup(each.value.default_node_pool, "vnet_subnet_id", null)
-    zones                = lookup(each.value.default_node_pool, "zones", null)
-    max_pods             = lookup(each.value.default_node_pool, "max_pods", 50)
-    node_labels          = lookup(each.value.default_node_pool, "node_labels", null)
-    node_taints          = lookup(each.value.default_node_pool, "node_taints", null)
-    type                 = lookup(each.value.default_node_pool, "type", null)
-    enable_auto_scaling  = lookup(each.value.default_node_pool, "enable_auto_scaling", null)
-    node_count           = lookup(each.value.default_node_pool, "node_count", null)
-    min_count            = lookup(each.value.default_node_pool, "min_count", null)
-    max_count            = lookup(each.value.default_node_pool, "max_count", null)
+    name                        = lookup(each.value.default_node_pool, "name", "default")
+    vm_size                     = lookup(each.value.default_node_pool, "vm_size", "Standard_B2s")
+    orchestrator_version        = lookup(each.value.default_node_pool, "orchestrator_version", null)
+    os_disk_size_gb             = lookup(each.value.default_node_pool, "os_disk_size_gb", 256)
+    vnet_subnet_id              = lookup(each.value.default_node_pool, "vnet_subnet_id", null)
+    zones                       = lookup(each.value.default_node_pool, "zones", null)
+    max_pods                    = lookup(each.value.default_node_pool, "max_pods", 50)
+    node_labels                 = lookup(each.value.default_node_pool, "node_labels", null)
+    node_taints                 = lookup(each.value.default_node_pool, "node_taints", null)
+    type                        = lookup(each.value.default_node_pool, "type", null)
+    enable_auto_scaling         = lookup(each.value.default_node_pool, "enable_auto_scaling", null)
+    node_count                  = lookup(each.value.default_node_pool, "node_count", null)
+    min_count                   = lookup(each.value.default_node_pool, "min_count", null)
+    max_count                   = lookup(each.value.default_node_pool, "max_count", null)
+    temporary_name_for_rotation = lookup(each.value.default_node_pool, "temporary_name_for_rotation", null)
   }
 
   dynamic "identity" {
